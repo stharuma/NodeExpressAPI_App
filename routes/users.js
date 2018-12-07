@@ -1,12 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+const userController = require('../controllers/users');
+
 router.route('/')
-.get((req, res, next) =>{
-    res.status(200).json({
-        message : 'You requested index page'
-    })
-})
+.get(userController.index)
 .post();
 
 module.exports = router; 
