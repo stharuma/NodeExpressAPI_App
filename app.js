@@ -3,15 +3,12 @@ const logger = require('morgan');
 
 
 const app =express();
+const users = require('./routes/users')
 
 //Middlewares
 app.use(logger('dev'));
 //Routes
-app.get('/', (req, res, next) =>{
-  res.status(200).json({
-      message : 'You requested index page'
-  })
-});
+app.use('/users', users);
 
 //Catch 404 errors and forward them to the error handeler
 app.use((req, res, next) => {
