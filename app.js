@@ -4,7 +4,10 @@ const logger = require('morgan');
 
 const app =express();
 const users = require('./routes/users')
-
+const mongoose = require('mongoose');
+//Mongo DB connection setup
+//mongoose.connect('mongodb://localhost/<name of your database>');
+mongoose.connect('mongodb://localhost/api_app');
 //Middlewares
 app.use(logger('dev'));
 //Routes
