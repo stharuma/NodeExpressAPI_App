@@ -1,14 +1,19 @@
 const express = require('express');
 const logger = require('morgan'); 
+const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
+
+//Mongo DB connection setup
+//mongoose.connect('mongodb://localhost/<name of your database>');
+mongoose.Promise=global.Promise;
+mongoose.connect('mongodb://localhost/api_app');
 
 
 const app =express();
+//Routers
 const users = require('./routes/users')
-const mongoose = require('mongoose');
-//Mongo DB connection setup
-//mongoose.connect('mongodb://localhost/<name of your database>');
-mongoose.connect('mongodb://localhost/api_app');
+
+
 //Middlewares
 app.use(logger('dev'));
 app.use(bodyParser.json());
