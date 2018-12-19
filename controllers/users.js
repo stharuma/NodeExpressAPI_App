@@ -12,12 +12,18 @@
          const user = await newUser.save();
          res.status(201).json(user);
      },
-     getUser:async (req, res, next) => {
+     getUserById:async (req, res, next) => {
          //console.log('req.param',req.params);
          const {userId} = req.params;//const userId=req.pqrqms.userId 
          const user= await User.findById(userId);
          res.status(201).json(user);
-     }
+     },
+     replaceUser:async (req, res, next) => {
+        const {userId} = req.params;//const userId=req.pqrqms.userId 
+        const newUser =req.body;
+        const result = await User.findByIdAndUpdate(userId, newUser);
+        res.status(200).json(result);
+    }
 
  };
 

@@ -9,6 +9,7 @@ router.route('/')
 .post(userController.newUser);
 //users/:id
 router.route('/:userId')
-.get(userController.getUser);
+.get(userController.getUserById)
+.put(userController.replaceUser);
 
 module.exports = router; 
