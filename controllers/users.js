@@ -11,7 +11,14 @@
          const newUser = new User(req.body);
          const user = await newUser.save();
          res.status(201).json(user);
+     },
+     getUser:async (req, res, next) => {
+         //console.log('req.param',req.params);
+         const {userId} = req.params;//const userId=req.pqrqms.userId 
+         const user= await User.findById(userId);
+         res.status(201).json(user);
      }
+
  };
 
  /**
