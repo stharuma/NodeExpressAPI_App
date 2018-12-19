@@ -22,7 +22,8 @@
         const {userId} = req.params;//const userId=req.pqrqms.userId 
         const newUser =req.body;
         const result = await User.findByIdAndUpdate(userId, newUser);
-        res.status(200).json(result);
+        console.log('result', result);
+        res.status(200).json({success:true});
     }
 
  };
