@@ -7,10 +7,15 @@ const userController = require('../controllers/users');
 router.route('/')
 .get(userController.index)
 .post(userController.newUser);
-//users/:id
+// users/:id
 router.route('/:userId')
 .get(userController.getUserById)
 .put(userController.replaceUser)
 .patch(userController.updateUser);
+
+// users/:id/cars
+router.route('/:userId/cars')
+.get(userController.getUserCars)
+.post(userController.newUserCar);
 
 module.exports = router; 
