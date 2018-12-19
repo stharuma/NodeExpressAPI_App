@@ -10,6 +10,7 @@ router.route('/')
 //users/:id
 router.route('/:userId')
 .get(userController.getUserById)
-.put(userController.replaceUser);
+.put(userController.replaceUser)
+.patch(userController.updateUser);
 
 module.exports = router; 
