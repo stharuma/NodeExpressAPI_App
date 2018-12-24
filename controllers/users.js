@@ -19,11 +19,8 @@
          res.status(201).json(user);
      },
      getUserById: async (req, res, next) => {
-         //console.log('req.param',req.params);
-         const result = Joi.validate(req.params, idSchema);
-         console.log('result', result);
          const {userId} = req.params; //const userId=req.pqrqms.userId 
-         const user = await User.findById(result.value.userId);
+         const user = await User.findById(userId);
          res.status(201).json(user);
      },
      //enforce that req.body must contain all the feilds
