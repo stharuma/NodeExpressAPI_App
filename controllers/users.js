@@ -1,11 +1,7 @@
  const User = require('../models/user');
  const Car = require('../models/car');
 
- const Joi= require('joi');
- const idSchema = Joi.object().keys({
-     userId:Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
- });
-
+ 
  module.exports = {
      // Async/Await
      index: async (req, res, next) => {
@@ -19,7 +15,10 @@
          res.status(201).json(user);
      },
      getUserById: async (req, res, next) => {
-         const {userId} = req.params; //const userId=req.pqrqms.userId 
+         // no validate userId
+         //const {userId} = req.params; //const userId=req.pqrqms.userId 
+         // validate UserId
+         const {userId} =req.value.params;
          const user = await User.findById(userId);
          res.status(201).json(user);
      },
