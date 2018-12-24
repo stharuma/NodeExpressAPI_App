@@ -1,6 +1,11 @@
  const User = require('../models/user');
  const Car = require('../models/car');
 
+ const Joi= require('joi');
+ const idSchema = Joi.object().keys({
+     userId:Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+ });
+
  module.exports = {
      // Async/Await
      index: async (req, res, next) => {
@@ -15,8 +20,10 @@
      },
      getUserById: async (req, res, next) => {
          //console.log('req.param',req.params);
+         const result = Joi.validate(req.params, idSchema);
+         console.log('result', result);
          const {userId} = req.params; //const userId=req.pqrqms.userId 
-         const user = await User.findById(userId);
+         const user = await User.findById(result.value.userId);
          res.status(201).json(user);
      },
      //enforce that req.body must contain all the feilds
