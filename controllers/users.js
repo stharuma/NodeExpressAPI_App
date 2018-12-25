@@ -10,7 +10,8 @@
          res.status(200).json(users);
      },
      newUser: async (req, res, next) => {
-         const newUser = new User(req.body);
+         //console.log('req.value',req.value);
+         const newUser = new User(req.value.body);
          const user = await newUser.save();
          res.status(201).json(user);
      },
