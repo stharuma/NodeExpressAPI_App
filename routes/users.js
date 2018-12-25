@@ -11,8 +11,8 @@ router.route('/')
 // users/:id
 router.route('/:userId')
 .get(validateParam(schemas.idSchema, 'userId'), userController.getUserById)
-.put(userController.replaceUser)
-.patch(userController.updateUser);
+.put([validateParam(schemas.idSchema, 'userId'), validateBody(schemas.userSchema)], userController.replaceUser)
+.patch([validateParam(schemas.idSchema, 'userId'), validateBody(schemas.userOptionalSchema)], userController.updateUser);
 
 // users/:id/cars
 router.route('/:userId/cars')

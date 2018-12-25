@@ -41,11 +41,18 @@ module.exports = {
     },
 
     schemas: {
+        // POST and PUT
         userSchema:Joi.object().keys({
            firstName:Joi.string().required(),
            lastName: Joi.string().required(),
            email: Joi.string().email().required()
         }),
+        //PATCH
+        userOptionalSchema:Joi.object().keys({
+            firstName:Joi.string(),
+            lastName: Joi.string(),
+            email: Joi.string().email()
+         }),
         idSchema: Joi.object().keys({
             param: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
         })
