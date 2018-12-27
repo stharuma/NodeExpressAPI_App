@@ -17,6 +17,6 @@ router.route('/:userId')
 // users/:id/cars
 router.route('/:userId/cars')
 .get(validateParam(schemas.idSchema, 'userId'), userController.getUserCars)
-.post(userController.newUserCar);
+.post([validateParam(schemas.idSchema, 'userId'), validateBody(schemas.carSchema)], userController.newUserCar);
 
 module.exports = router; 

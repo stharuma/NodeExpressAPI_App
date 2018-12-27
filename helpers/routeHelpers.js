@@ -25,8 +25,8 @@ module.exports = {
 
     validateBody: (schema) => {
         return (req, res, next) => {
-            const result = Joi.validate(req.body, schema);
-
+        const result = Joi.validate(req.body, schema);
+            
             if (result.error) {
                 return res.status(400).json(result.error);
             } else {
@@ -52,6 +52,11 @@ module.exports = {
             firstName:Joi.string(),
             lastName: Joi.string(),
             email: Joi.string().email()
+         }),
+         carSchema:Joi.object().keys({
+            make:Joi.string().required(),
+            model:Joi.string().required(),
+            year:Joi.number().required()
          }),
         idSchema: Joi.object().keys({
             param: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()

@@ -57,13 +57,15 @@
          res.status(200).json(user.cars);
     },
     newUserCar: async (req, res, next) => {
-        const {userId} = req.params;
+         //validated req.params to req.value.params
+        const {userId} = req.value.params;
         //create new car
-        const newCar = new Car(req.body);
+        //validated req.body to req.value.body
+        const newCar = new Car(req.value.body);
         //get User
         const user = await User.findById(userId);
         //assign user is a car's seller
-        newCar.seller =user;
+        newCar.seller = user;
         //seve the car
         await newCar.save();
         //add the car to the user's selling array 'cars'
