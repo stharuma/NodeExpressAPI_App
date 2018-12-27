@@ -50,7 +50,8 @@
          });
      },
      getUserCars: async (req, res, next) => {
-         const {userId} = req.params;
+        //validated req.params to req.value.params
+        const {userId} = req.value.params;
          const user = await User.findById(userId).populate('cars');
          console.log('user', user);
          res.status(200).json(user.cars);
