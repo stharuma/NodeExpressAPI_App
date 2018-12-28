@@ -10,6 +10,7 @@ router.route('/')
 router.route('/:carId')
 .get(validateParam(schemas.idSchema, 'carId'), carController.getCar)
 .put([validateParam(schemas.idSchema, 'carId'), validateBody(schemas.putCarSchema)], carController.replaceCar)
-.patch([validateParam(schemas.idSchema, 'carId'), validateBody(schemas.patchCarSchema)], carController.updateCar);
+.patch([validateParam(schemas.idSchema, 'carId'), validateBody(schemas.patchCarSchema)], carController.updateCar)
+.delete(validateParam(schemas.idSchema, 'carId'), carController.deleteCar)
 
 module.exports = router;

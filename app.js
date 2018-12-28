@@ -2,6 +2,7 @@ const express = require('express');
 const logger = require('morgan'); 
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser'); 
+const helmet = require('helmet');
 
 //Mongo DB connection setup
 //mongoose.connect('mongodb://localhost/<name of your database>');
@@ -10,6 +11,7 @@ mongoose.connect('mongodb://localhost/api_app');
 
 
 const app =express();
+app.use(helmet());
 //Routers
 const users = require('./routes/users');
 const cars = require('./routes/cars');

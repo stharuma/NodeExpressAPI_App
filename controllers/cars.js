@@ -44,7 +44,7 @@ module.exports = {
 
     updateCar: async (req, res, next) => {
         //validated req.params to req.value.params
-        const {carId} = req.value.params; //const userId=req.pqrqms.userId 
+        const {carId} = req.value.params; 
          //validated req.body to req.value.body
         const newCar = req.value.body;
         const result = await Car.findByIdAndUpdate(carId, newCar);
@@ -52,6 +52,28 @@ module.exports = {
             success: true
         });
     },
+
+    deleteCar: async (req, res, next)=>{
+        //validated req.params to req.value.params
+        const {carId} = req.value.params; 
+        //Get a car
+        const car = await Car.findById(carId);
+        if(!car){
+          return res.status(404).json({error:"Car doesn\'t exist"});
+        }
+        const sellerId = car.seller;
+
+        //Get a seller
+        const seller =await User.findById(sellerId);
+        //remove the car
+        await car.remove();
+        //Remove the car from seller's selling List
+        seller.cars.pull(car);
+        await seller.save()
+        //we are done
+        res.status(200).json({success: true});
+
+    }
 
 
 };
