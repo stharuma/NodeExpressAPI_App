@@ -28,7 +28,8 @@ module.exports = {
     },
 
     getCar:async (req, res, next)=>{
-        const car = await Car.findById(req.params.carId);
+        //validated
+        const car = await Car.findById(req.value.params.carId);
         res.status(200).json(car);
     }
 

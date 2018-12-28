@@ -8,7 +8,7 @@ router.route('/')
 .post(validateBody(schemas.newCarSchema), carController.newCar);
 
 router.route('/:carId')
-.get(carController.getCar);
+.get(validateParam(schemas.idSchema, 'carId'), carController.getCar);
 
 
 module.exports = router;
