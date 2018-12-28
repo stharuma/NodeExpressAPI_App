@@ -31,6 +31,15 @@ module.exports = {
         //validated
         const car = await Car.findById(req.value.params.carId);
         res.status(200).json(car);
+    },
+
+    replaceCar: async (req, res, next)=>{
+       const {carId} = req.params; 
+       const newCar = req.body;
+       const result = await Car.findByIdAndUpdate(carId, newCar);
+       res.status(200).json({
+           success: true
+       });
     }
 
 
