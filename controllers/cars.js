@@ -40,7 +40,18 @@ module.exports = {
        res.status(200).json({
            success: true
        });
-    }
+    },
+
+    updateCar: async (req, res, next) => {
+        //validated req.params to req.value.params
+        const {carId} = req.value.params; //const userId=req.pqrqms.userId 
+         //validated req.body to req.value.body
+        const newCar = req.value.body;
+        const result = await Car.findByIdAndUpdate(carId, newCar);
+        res.status(200).json({
+            success: true
+        });
+    },
 
 
 };
