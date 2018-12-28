@@ -53,12 +53,12 @@ module.exports = {
             lastName: Joi.string(),
             email: Joi.string().email()
          }),
-         carSchema:Joi.object().keys({
+         userCarSchema:Joi.object().keys({
             make:Joi.string().required(),
             model:Joi.string().required(),
             year:Joi.number().required()
          }),
-         newCarSchema:Joi.object().keys({
+         carSchema:Joi.object().keys({
             seller:Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
             make:Joi.string().required(),
             model:Joi.string().required(),
