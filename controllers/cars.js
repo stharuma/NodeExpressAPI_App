@@ -34,8 +34,8 @@ module.exports = {
     },
 
     replaceCar: async (req, res, next)=>{
-       const {carId} = req.params; 
-       const newCar = req.body;
+       const {carId} = req.value.params; 
+       const newCar = req.value.body;
        const result = await Car.findByIdAndUpdate(carId, newCar);
        res.status(200).json({
            success: true

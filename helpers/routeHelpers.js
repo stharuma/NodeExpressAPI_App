@@ -64,6 +64,11 @@ module.exports = {
             model:Joi.string().required(),
             year:Joi.number().required()
          }),
+         putCarSchema:Joi.object().keys({
+            make:Joi.string().required(),
+            model:Joi.string().required(),
+            year:Joi.number().required()
+         }),
         idSchema: Joi.object().keys({
             param: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
         })

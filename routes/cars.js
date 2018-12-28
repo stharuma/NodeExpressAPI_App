@@ -9,7 +9,7 @@ router.route('/')
 
 router.route('/:carId')
 .get(validateParam(schemas.idSchema, 'carId'), carController.getCar)
-.put(carController.replaceCar);
+.put([validateParam(schemas.idSchema, 'carId'), validateBody(schemas.putCarSchema)], carController.replaceCar);
 
 
 module.exports = router;
