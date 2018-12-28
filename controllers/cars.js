@@ -25,6 +25,11 @@ module.exports = {
         await seller.save();
         //we are done
         res.status(200).json(car);
+    },
+
+    getCar:async (req, res, next)=>{
+        const car = await Car.findById(req.params.carId);
+        res.status(200).json(car);
     }
 
 
