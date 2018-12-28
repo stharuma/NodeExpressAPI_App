@@ -10,9 +10,10 @@ module.exports = {
 
     newCar: async (req, res, next)=>{
         //Find the actual seller
-        const seller = await User.findById(req.body.seller);
+        const reqBody =req.value.body;//validated body
+        const seller = await User.findById(reqBody.seller);
         //Create new car
-        const newCar = req.body;
+        const newCar = reqBody;
         delete newCar.seller;
 
         const car = new Car(newCar);

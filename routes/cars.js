@@ -5,6 +5,6 @@ const {validateParam, validateBody, schemas} = require('../helpers/routeHelpers'
 
 router.route('/')
 .get(carController.index)
-.post(carController.newCar);
+.post(validateBody(schemas.newCarSchema), carController.newCar);
 
 module.exports = router;
